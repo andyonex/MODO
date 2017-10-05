@@ -1,8 +1,10 @@
 # python
 # FREEZE AND EXPORT SELECTED OBJECTS
 # BY: Andy Budanov
-#
-# Freeze selected objects and export with FBX preset settings or OBJ
+# 
+# Export frozen selected objects with FBX preset settings or OBJ
+# Useful if you'd like to bake Catmull-Clark subdivision meshes in other application (but keep them low in your modo file).
+# 
 # In case vertex normals get weird after freeze, 
 # try different script arguments:    
 # "@freezeAndExport.py"        -freeze and export as FBX
