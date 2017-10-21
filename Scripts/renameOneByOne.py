@@ -20,7 +20,6 @@ selectedMeshes = scene.selected
 
 for meshItem in selectedMeshes:
 	scene.select(meshItem)
-
 	lx.eval("viewport.fitSelected")	
 	lx.eval("layer.renameSelected")
 
