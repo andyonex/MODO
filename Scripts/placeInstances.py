@@ -19,10 +19,16 @@ if len( selectedMeshes ) > 2:
 	org = selectedMeshes[len(selectedMeshes)-1]
 	for item in scene.selected:
 		if item.id != org.id:
+
 			instance = modo.Scene().duplicateItem(org, instance=True)
+			
 			transf = modo.LocatorSuperType(item).position.get()
 			rot =  modo.LocatorSuperType(item).rotation.get()
 			scl =  modo.LocatorSuperType(item).scale.get()
+			
+			if item.parent != None:
+				instance.setParent(item.parent)
+				
 			modo.LocatorSuperType(instance).position.set(transf)
 			modo.LocatorSuperType(instance).rotation.set(rot)
 			modo.LocatorSuperType(instance).scale.set(scl)
