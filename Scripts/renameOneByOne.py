@@ -20,7 +20,10 @@ selectedMeshes = scene.selected
 
 for meshItem in selectedMeshes:
 	scene.select(meshItem)
-	lx.eval("viewport.fitSelected")	
-	lx.eval("layer.renameSelected")
+	lx.eval("viewport.fitSelected")
+	try:
+		lx.eval("layer.renameSelected")
+	except:
+		break
 
 lx.eval("view3d.inactiveInvisible %s" %isIsolated)
