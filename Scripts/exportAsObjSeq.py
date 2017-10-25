@@ -1,6 +1,7 @@
 # python
-# Export animation as obj sequence
-# specially for bobby
+# Export animated objects as obj sequence
+# Usage: Select items you want to export, start the script with @exportAsObjSeq.py
+# specially for Bobby
 # Author: Andy Budanov
 # ```python
 
