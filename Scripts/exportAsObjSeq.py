@@ -1,7 +1,6 @@
 # python
-# Export animated objects as obj sequence
-# Usage: Select items you want to export, start the script with @exportAsObjSeq.py
-# specially for Bobby
+# Export animation as obj sequence
+# specially for bobby
 # Author: Andy Budanov
 # ```python
 
@@ -14,7 +13,7 @@ scene = modo.Scene()
 # init File Dialog
 try:
 	lx.eval("dialog.setup fileSave")
-	lx.eval("dialog.title \"File Name and Save Location...\"")
+	lx.eval("dialog.title \"Map Save Location...\"")
 	lx.eval("dialog.fileTypeCustom obj \"Obj\" \"*.obj\" obj")
 	lx.eval('dialog.open')
 	fullPath = lx.eval('dialog.result ?')
