@@ -15,24 +15,35 @@ scene = modo.Scene()
 
 selectedMeshes = scene.selected
 
-if len( selectedMeshes ) > 2:
-	org = selectedMeshes[len(selectedMeshes)-1]
-	for item in scene.selected:
-		if item.id != org.id:
+masterObject = None
 
-			instance = modo.Scene().duplicateItem(org, instance=True)
-			
-			transf = modo.LocatorSuperType(item).position.get()
-			rot =  modo.LocatorSuperType(item).rotation.get()
-			scl =  modo.LocatorSuperType(item).scale.get()
-			
-			if item.parent != None:
-				instance.setParent(item.parent)
+# look if there is a proper object to instantiate 
+if len( selectedMeshes ) >= 2:
+	for item in reversed(selectedMeshes):
+		if (item.type in ["mesh", "meshInst", "locator"]):
+			masterObject = item
+			break
+
+# place and adjust instances of a last selected object 
+if (masterObject != None):
+	for item in selectedMeshes:
+		if (item.type in ["mesh", "meshInst", "locator"]): 
+			if item.id != masterObject.id:
 				
-			modo.LocatorSuperType(instance).position.set(transf)
-			modo.LocatorSuperType(instance).rotation.set(rot)
-			modo.LocatorSuperType(instance).scale.set(scl)
-
-# remove last element from selection
-selectedMeshes.pop()
-scene.select(selectedMeshes)
+				instance = modo.Scene().duplicateItem(masterObject, instance=True)
+					
+				transf = modo.LocatorSuperType(item).position.get()
+				rot =  modo.LocatorSuperType(item).rotation.get()
+				scl =  modo.LocatorSuperType(item).scale.get()
+					
+				# Place instance according to a hierarchy
+				if item.parent != None:
+					instance.setParent(item.parent)
+						
+				modo.LocatorSuperType(instance).position.set(transf)
+				modo.LocatorSuperType(instance).rotation.set(rot)
+				modo.LocatorSuperType(instance).scale.set(scl)
+	
+	# remove last element from selection
+	selectedMeshes.pop()
+	scene.select(selectedMeshes)
