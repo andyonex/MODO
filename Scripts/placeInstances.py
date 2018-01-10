@@ -45,5 +45,5 @@ if (masterObject != None):
 				modo.LocatorSuperType(instance).scale.set(scl)
 	
 	# remove last element from selection
-	selectedMeshes.pop()
+	selectedMeshes.remove(masterObject)
 	scene.select(selectedMeshes)
