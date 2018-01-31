@@ -1,5 +1,6 @@
 # python
 # Replace instances of an instances with the regular instances
+# https://i.imgur.com/hvJv2S0.gifv
 # Usage: Select the original objects, instances of which you want to fix
 # Author: Andy Budanov
 # ```python
